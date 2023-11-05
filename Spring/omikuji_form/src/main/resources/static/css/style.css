@@ -1,0 +1,15 @@
+.col{
+    max-width: 150px;
+    margin-left: 50px;
+    background-color: rgb(159,197,248);
+    padding:20px;
+    border: 2px solid black;
+    font-size: larger;
+    font-weight: bolder;
+    margin-bottom: 50px;
+}
+a{
+    margin-left:125px;
+    font-size: large;
+    margin-top: 50px;
+}

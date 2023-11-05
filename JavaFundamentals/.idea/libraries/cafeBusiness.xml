@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="cafeBusiness">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/cafeBusiness.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
