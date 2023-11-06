@@ -44,13 +44,6 @@ public class Burger {
     public Burger() {
     }
 
-    public Burger(Long id, String burgerName, String restaurantName, Integer rating, String notes) {
-        this.id = id;
-        this.burgerName = burgerName;
-        this.restaurantName = restaurantName;
-        this.rating = rating;
-        this.notes = notes;
-    }
 
     public Long getId() {
         return this.id;
