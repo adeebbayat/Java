@@ -10,7 +10,7 @@
 <title>Edit Expense</title>
 </head>
 <body style="margin:10vw;">
-<h2>Edit Burger</h2>
+<h2>Edit Expense</h2>
 <form:form action="/edit/${expense.id}" mode="put" modelAttribute="expense">
 	<div>
 		<form:label path="name">Expense Name:</form:label><br>
