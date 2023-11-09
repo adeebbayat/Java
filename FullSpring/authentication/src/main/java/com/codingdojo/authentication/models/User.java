@@ -80,4 +80,15 @@ public class User {
         this.confirm = confirm;
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", userName='" + getUserName() + "'" +
+            ", email='" + getEmail() + "'" +
+            ", password='" + getPassword() + "'" +
+            ", confirm='" + getConfirm() + "'" +
+            "}";
+    }
+
 }

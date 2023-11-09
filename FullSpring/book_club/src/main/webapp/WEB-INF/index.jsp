@@ -18,14 +18,14 @@
 <body>
     <div class="whole">
         <div class="leftCol">
-        <h1>Welcome!</h1>
-        <h3>Join our growing community.</h3>
+        <h1>Book Club!</h1>
+        <p>A place for friends to share thoughts on books.</p>
         <h4>Register:</h4>
             <form:form action="/register" mode="post" modelAttribute="newUser">
                 <div>
-                    <form:label path="userName">User Name:</form:label>
-                    <form:input path="userName"/>
-                    <form:errors path="userName" class="text-danger"/>
+                    <form:label path="name">Name:</form:label>
+                    <form:input path="name"/>
+                    <form:errors path="name" class="text-danger"/>
                 </div>
                 <div>
                     <form:label path="email">Email:</form:label>
@@ -50,7 +50,7 @@
     
         <div class="rightCol">
             <h4>Login:</h4>
-            <form:form action="/login" method="post" modelAttribute="newLogin">
+            <form:form action="/login" mode="post" modelAttribute="newLogin">
                 <div>
                     <form:label path="email">Email:</form:label>
                     <form:input path="email"/>
@@ -66,7 +66,6 @@
                 </div>
             </form:form>
         </div>
-        
     </div>
     
 </body>

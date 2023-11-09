@@ -1,5 +1,6 @@
 package com.codingdojo.authentication.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.codingdojo.authentication.models.LoginUser;
 import com.codingdojo.authentication.models.User;
+import com.codingdojo.authentication.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -19,9 +21,23 @@ import jakarta.validation.Valid;
 public class HomeController {
     
     // Add once service is implemented:
-    // @Autowired
-    // private UserService userServ;
+    @Autowired
+    private UserService userService;
     
+    @GetMapping("/home")
+    public String home(Model model,HttpSession session){
+        if(session.getAttribute("user") == null){
+            return "redirect:/";
+        }
+        model.addAttribute("user", session.getAttribute("user"));
+        return "home.jsp";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+        session.invalidate();
+        return "redirect:/";
+    }
     @GetMapping("/")
     public String index(Model model) {
     
@@ -38,7 +54,7 @@ public class HomeController {
         
         // TO-DO Later -- call a register method in the service 
         // to do some extra validations and create a new user!
-        
+        User user = userService.register(newUser,result);
         if(result.hasErrors()) {
             // Be sure to send in the empty LoginUser before 
             // re-rendering the page.
@@ -49,7 +65,8 @@ public class HomeController {
         // No errors! 
         // TO-DO Later: Store their ID from the DB in session, 
         // in other words, log them in.
-    
+        session.setAttribute("userId", user.getId());
+        session.setAttribute("user", user);
         return "redirect:/home";
     }
     
@@ -57,20 +74,26 @@ public class HomeController {
     public String login(@Valid @ModelAttribute("newLogin") LoginUser newLogin, 
             BindingResult result, Model model, HttpSession session) {
         
-        // Add once service is implemented:
-        // User user = userServ.login(newLogin, result);
-    
-        if(result.hasErrors()) {
-            model.addAttribute("newUser", new User());
-            return "index.jsp";
-        }
-    
-        // No errors! 
+                // Add once service is implemented:
+                if(result.hasErrors()) {
+                    model.addAttribute("newUser", new User());
+                    return "index.jsp";
+                }
+                User user = userService.login(newLogin, result);
+                if(user == null) {
+                    model.addAttribute("newUser", new User());
+                    return "index.jsp";
+                }
+                
+                // No errors! 
         // TO-DO Later: Store their ID from the DB in session, 
         // in other words, log them in.
+        session.setAttribute("userId", user.getId());
+        session.setAttribute("user", user);
     
         return "redirect:/home";
     }
     
 }
+
 

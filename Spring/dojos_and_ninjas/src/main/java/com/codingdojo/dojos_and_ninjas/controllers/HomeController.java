@@ -54,6 +54,7 @@ public class HomeController {
         List<Ninja> ninjas = dojo.getNinjas();
         model.addAttribute("dojo", dojo);
         model.addAttribute("ninjas", ninjas);
+        
         return "dojos/show";
     }
 }

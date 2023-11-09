@@ -18,17 +18,18 @@ public class DojoService {
         this.dojoRepository = dojoRepository;
     }
 
+    // Create Dojo
+    public Dojo addDojo(Dojo dojo){
+        return dojoRepository.save(dojo);
+    }
+    
     // Find All
     public List<Dojo> allDojos(){
         return dojoRepository.findAll();
     }
 
-    // Create Dojo
-    public Dojo addDojo(Dojo dojo){
-        return dojoRepository.save(dojo);
-    }
 
-    // Find Dojo
+    // Find One Dojo
     public Dojo findDojo(Long id) {
 		Optional<Dojo> optionalDojo = dojoRepository.findById(id);
 		if(optionalDojo.isPresent()) {

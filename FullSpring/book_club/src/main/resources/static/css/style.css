@@ -1,0 +1,42 @@
+.whole{
+    display: flex;
+    gap:20px;
+}
+.leftCol{
+    margin:30px;
+    margin-right: 60px;
+}
+.rightCol{
+    margin-top: 250px;
+}
+
+.leftCol form{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap:30px;
+}
+
+.newBook form{
+    display: flex;
+    flex-direction: column;
+    gap:30px;
+}
+.rightCol form{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap:30px;
+}
+
+.top{
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons{
+    display: flex;
+    justify-content: end;
+    margin-right: 200px;
+    gap:50px;
+}
