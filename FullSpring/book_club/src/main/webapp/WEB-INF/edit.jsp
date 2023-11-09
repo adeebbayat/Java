@@ -22,9 +22,9 @@
     </div>
     <div class="newBook">
 
-        <form:form action="/books/${book.id}/edit" mode="post" modelAttribute="book">
+        <form:form action="/books/${book.id}/edit" method="post" modelAttribute="book">
             <input type="hidden" name="user" value="${userId}"/>
-            <input type="hidden" name="id" value="${book.id}"/>
+            <input type="hidden" name="_method" value="put"/>
             <div>
                 <form:label path="title">Title:</form:label>
                 <form:input path="title"/>

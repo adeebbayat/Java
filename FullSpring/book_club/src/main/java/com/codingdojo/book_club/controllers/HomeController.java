@@ -3,7 +3,6 @@ package com.codingdojo.book_club.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner.Mode;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.codingdojo.book_club.models.Book;
 import com.codingdojo.book_club.models.LoginUser;
@@ -149,8 +149,8 @@ public class HomeController {
         return "edit.jsp";
     }
 
-    @PostMapping("/books/{bookId}/edit")
-    public String updateBook(@Valid @ModelAttribute("book") Book book, BindingResult result, @PathVariable("bookId") Long id, Model model){
+    @PutMapping("/books/{id}/edit")
+    public String updateBook(@Valid @ModelAttribute("book") Book book, BindingResult result, @PathVariable("id") Long id, Model model){
         if(result.hasErrors()){
             return "edit.jsp";
         }
